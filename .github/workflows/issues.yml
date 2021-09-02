@@ -10,7 +10,7 @@ jobs:
     #   - uses: actions/checkout@v2
     #   - name: Update Issue
     #     uses: ./.github/actions/issues
-     steps:
+    steps:
       - name: Check out repo
         uses: actions/checkout@v2
       - name: Use Node
@@ -22,6 +22,4 @@ jobs:
       - name: Check for issues updates
         env:
           GITHUB_TOKEN: ${{ github.token }}
-        run: npm run update-issue -- --token=$GITHUB_TOKEN
-
-
+        run: npm run update-readme -- --token=$GITHUB_TOKEN
