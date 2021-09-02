@@ -1,4 +1,4 @@
-name: Readme
+name: README
 on:
   push:
     branches:
@@ -7,6 +7,21 @@ jobs:
   UpdateJob:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Update Readme
-        uses: ./.github/actions/readme
+      - name: Check out repo
+        uses: actions/checkout@v2
+      - name: Use Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+      - name: Install node dependencies
+        run: npm install
+      - name: Check for issues updates
+        run: npm run update-readme
+      - name: Commit and push
+        run: |-
+          git diff
+          git config --global user.email "actions@users.noreply.github.com"
+          git config --global user.name "README-bot"
+          git add -A
+          git commit -m "Update README" || git commit --allow-empty -m "Empty commit"
+          git push

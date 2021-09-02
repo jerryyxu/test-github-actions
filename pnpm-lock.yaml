@@ -4,11 +4,13 @@ specifiers:
   '@actions/core': ^1.5.0
   '@actions/github': ^5.0.0
   '@vercel/ncc': ^0.30.0
+  node-fetch: ^3.0.0
 
 dependencies:
   '@actions/core': registry.nlark.com/@actions/core/1.5.0
   '@actions/github': registry.nlark.com/@actions/github/5.0.0
   '@vercel/ncc': registry.nlark.com/@vercel/ncc/0.30.0
+  node-fetch: registry.nlark.com/node-fetch/3.0.0
 
 packages:
 
@@ -170,10 +172,26 @@ packages:
     version: 2.2.2
     dev: false
 
+  registry.nlark.com/data-uri-to-buffer/3.0.1:
+    resolution: {integrity: sha1-WUuJc5OMW8LDMEZTV4U0GrxPNjY=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/data-uri-to-buffer/download/data-uri-to-buffer-3.0.1.tgz}
+    name: data-uri-to-buffer
+    version: 3.0.1
+    engines: {node: '>= 6'}
+    dev: false
+
   registry.nlark.com/deprecation/2.3.1:
     resolution: {integrity: sha1-Y2jL20Cr8zc7UlrIfkomDDpwCRk=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/deprecation/download/deprecation-2.3.1.tgz}
     name: deprecation
     version: 2.3.1
+    dev: false
+
+  registry.nlark.com/fetch-blob/3.1.2:
+    resolution: {integrity: sha1-a8Q4Z184UezqUXWKyR9qHNG6yr0=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/fetch-blob/download/fetch-blob-3.1.2.tgz}
+    name: fetch-blob
+    version: 3.1.2
+    engines: {node: ^12.20 || >= 14.13}
+    dependencies:
+      web-streams-polyfill: registry.nlark.com/web-streams-polyfill/3.1.0
     dev: false
 
   registry.nlark.com/node-fetch/2.6.1:
@@ -183,10 +201,27 @@ packages:
     engines: {node: 4.x || >=6.0.0}
     dev: false
 
+  registry.nlark.com/node-fetch/3.0.0:
+    resolution: {integrity: sha1-edpxRqUgA28sX2ROSiYJXxfkEeo=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/node-fetch/download/node-fetch-3.0.0.tgz?cache=0&sync_timestamp=1630427561507&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fnode-fetch%2Fdownload%2Fnode-fetch-3.0.0.tgz}
+    name: node-fetch
+    version: 3.0.0
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    dependencies:
+      data-uri-to-buffer: registry.nlark.com/data-uri-to-buffer/3.0.1
+      fetch-blob: registry.nlark.com/fetch-blob/3.1.2
+    dev: false
+
   registry.nlark.com/universal-user-agent/6.0.0:
     resolution: {integrity: sha1-M4H4UDslHA2c0hvB3pOeyd9UgO4=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/universal-user-agent/download/universal-user-agent-6.0.0.tgz}
     name: universal-user-agent
     version: 6.0.0
+    dev: false
+
+  registry.nlark.com/web-streams-polyfill/3.1.0:
+    resolution: {integrity: sha1-hvmDtPRHRVArDYVj2e86/GCdRGU=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/web-streams-polyfill/download/web-streams-polyfill-3.1.0.tgz}
+    name: web-streams-polyfill
+    version: 3.1.0
+    engines: {node: '>= 8'}
     dev: false
 
   registry.nlark.com/wrappy/1.0.2:
