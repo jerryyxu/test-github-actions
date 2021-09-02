@@ -11,7 +11,7 @@ const run = async () => {
     owner,
     repo,
     path: 'README.md',
-    message: 'update readme',
+    message: `post '${issue.title}'`,
     content: 'ok',
   });
 };
