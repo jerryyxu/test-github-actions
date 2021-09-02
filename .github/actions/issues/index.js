@@ -68,7 +68,7 @@ const run = async () => {
     issue_number: issue.number,
     milestone,
     assignees,
-    labels,
+    labels: ['bug'],
   });
 
   console.log(data);
