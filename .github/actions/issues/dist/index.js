@@ -6399,7 +6399,7 @@ const run = async () => {
   }
 
   // 设置标签
-  if (!issues.labels.length) {
+  if (!issue.labels.length) {
     data.labels = getLables();
   }
 
