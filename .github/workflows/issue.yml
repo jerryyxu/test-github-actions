@@ -1,16 +1,10 @@
 name: Update Issues
 on:
   issues:
-    types:
-      - opened
-      - eidted
+    types: [opened, edited]
 jobs:
   label:
     runs-on: ubuntu-latest
-    # steps:
-    #   - uses: actions/checkout@v2
-    #   - name: Update Issue
-    #     uses: ./.github/actions/issues
     steps:
       - name: Check out repo
         uses: actions/checkout@v2
