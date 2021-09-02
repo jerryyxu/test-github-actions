@@ -6342,21 +6342,23 @@ async function getMilestoneNum() {
   const month = `${now.getMonth() + 1}`.padStart(2, '0');
   const title = `${year}-${month}`;
 
-  const milestones = await octokit.rest.issues.listMilestones({
-    owner,
-    repo,
-  });
-
-  console.log(milestones);
+  const milestones = await octokit.rest.issues
+    .listMilestones({
+      owner,
+      repo,
+    })
+    .then((rsp) => rsp.data);
 
   let milestone = milestones.find((m) => m.title === title);
 
   if (!milestone) {
-    milestone = await octokit.rest.issues.createMilestone({
-      owner,
-      repo,
-      title,
-    });
+    milestone = await octokit.rest.issues
+      .createMilestone({
+        owner,
+        repo,
+        title,
+      })
+      .then((rsp) => rsp.data);
   }
 
   return milestone.number;
