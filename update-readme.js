@@ -3,6 +3,8 @@ import fetch from 'node-fetch';
 
 async function run() {
   try {
+    console.log(process.argv);
+
     const response = await fetch(
       'https://api.github.com/repos/jerryyxu/test-github-actions/issues?state=closed'
     );

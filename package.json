@@ -6,15 +6,14 @@
   "scripts": {
     "build": "node ./build.js",
     "push": "npm run build & git add . & git commit -m 'temp' & git push origin",
-    "update-readme": "node ./update-readme.js"
+    "update-readme": "node --input-type=module ./update-readme.js"
   },
-  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jerryyxu/test-github-actions.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "jeryyxu",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jerryyxu/test-github-actions/issues"
