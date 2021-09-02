@@ -6372,18 +6372,18 @@ async function getOrCreateMilestone() {
   return milestone.number;
 }
 
-function getAssignees() {
-  return core
-    .getInput('assignees', { default: owner })
-    .split(',')
-    .map((name) => name.trim());
-}
+// function getAssignees() {
+//   return core
+//     .getInput('assignees', { default: owner })
+//     .split(',')
+//     .map((name) => name.trim());
+// }
 
-function getLables() {
-  const labels = core.getInput('labels');
+// function getLables() {
+//   const labels = core.getInput('labels');
 
-  return labels ? labels.split(',').map((label) => label.trim()) : [];
-}
+//   return labels ? labels.split(',').map((label) => label.trim()) : [];
+// }
 
 const run = async () => {
   const data = { owner, repo, issue_number: issue.number };
@@ -6395,12 +6395,12 @@ const run = async () => {
 
   // 设置 assignees
   if (!issue.assignees.length) {
-    data.assignees = getAssignees();
+    data.assignees = [owner];
   }
 
   // 设置标签
   if (!issue.labels.length) {
-    data.labels = getLables();
+    data.labels = ['bug'];
   }
 
   console.log('[update issue]: ', data);
