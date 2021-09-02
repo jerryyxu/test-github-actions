@@ -17,7 +17,7 @@ const run = async () => {
     }
   });
 
-  console.log('>>>> build finished.');
+  console.log('Build finished.');
 };
 
 run();
