@@ -22,4 +22,4 @@ jobs:
       - name: Check for issues updates
         env:
           GITHUB_TOKEN: ${{ github.token }}
-        run: npm run update-readme -- --token=$GITHUB_TOKEN
+        run: npm run update-issue -- --token=$GITHUB_TOKEN

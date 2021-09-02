@@ -4,7 +4,7 @@ import argsParser from 'args-parser';
 
 async function run() {
   try {
-    const args = argsParser.parse(process.argv);
+    const args = argsParser(process.argv);
 
     const response = await fetch(
       `https://api.github.com/repos/${args.repo}/issues?state=closed`
