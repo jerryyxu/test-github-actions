@@ -1,9 +1,7 @@
-name: Update README
+name: Update README.md
 on:
   issues:
-    - edited
-    - deleted
-    - closed
+    types: [edited, deleted, closed]
 jobs:
   UpdateJob:
     runs-on: ubuntu-latest
