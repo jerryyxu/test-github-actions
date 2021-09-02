@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "build": "ncc build ./.github/actions/issues/index.js -o ./.github/actions/issues/dist",
+    "build": "node ./build.js",
     "push": "npm run build & git add . & git commit -m 'temp' & git push origin"
   },
   "repository": {
