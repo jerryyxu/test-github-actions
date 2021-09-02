@@ -6,7 +6,7 @@
   "scripts": {
     "build": "node ./build.js",
     "push": "npm run build & git add . & git commit -m 'temp' & git push origin",
-    "update-readme": "node --input-type=module ./update-readme.js"
+    "update-readme": "node ./update-readme.mjs"
   },
   "repository": {
     "type": "git",
