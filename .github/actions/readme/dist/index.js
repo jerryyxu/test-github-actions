@@ -6345,7 +6345,7 @@ const run = async () => {
     repo,
     path: 'README.md',
     message: 'update README.md',
-    content: issues && issues.length && issues.map((v) => v.title),
+    content: issues && issues.length && issues.map((v) => v.title).join('\n'),
   });
 };
 
