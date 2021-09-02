@@ -4,6 +4,9 @@ inputs:
   repo-token:
     description: 'The GITHUB_TOKEN, needed to update the files'
     default: ${{ github.token }}
+  repo-sha:
+    description: 'The GITHUB_SHA, needed to update the files'
+    default: ${{ github.sha }}
 
 runs:
   using: node12
