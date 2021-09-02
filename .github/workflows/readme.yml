@@ -1,8 +1,9 @@
-name: README
+name: Update README
 on:
-  push:
-    branches:
-      - main
+  issues:
+    - edited
+    - deleted
+    - closed
 jobs:
   UpdateJob:
     runs-on: ubuntu-latest

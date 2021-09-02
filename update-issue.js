@@ -48,19 +48,6 @@ async function getOrCreateMilestone() {
   return milestone.number;
 }
 
-// function getAssignees() {
-//   return core
-//     .getInput('assignees', { default: owner })
-//     .split(',')
-//     .map((name) => name.trim());
-// }
-
-// function getLables() {
-//   const labels = core.getInput('labels');
-
-//   return labels ? labels.split(',').map((label) => label.trim()) : [];
-// }
-
 const run = async () => {
   const data = { owner, repo, issue_number: issue.number };
 
