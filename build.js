@@ -1,6 +1,6 @@
-import ncc from '@vercel/ncc';
-import fs from 'fs';
-import path from 'path';
+const fs = require('fs');
+const path = require('path');
+const { exec } = require('child_process');
 
 const actionsPath = path.resolve(process.cwd(), './.github/actions');
 
@@ -8,18 +8,16 @@ const run = async () => {
   const dirs = fs.readdirSync(actionsPath);
 
   dirs.map(async (d) => {
-    const [input, output] = ['index.js', 'index.dist.js'].map((n) =>
-      path.resolve(actionsPath, d, n)
+    const [input, dir] = ['index.js', 'dist'].map((f) =>
+      path.join(actionsPath, d, f)
     );
 
     if (fs.existsSync(input)) {
-      const { code } = await ncc(input, {
-        // minify: true,
-      });
-
-      fs.writeFileSync(output, code);
+      exec(`ncc build ${input} -o ${dir}`);
     }
   });
+
+  console.log('>>>> build finished.');
 };
 
 run();
