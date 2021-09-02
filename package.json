@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "node ./build.js",
-    "push": "npm run build & git add . & git commit -m 'temp' & git push origin",
+    "push": "git pull & npm run build & git add . & git commit -m 'temp' & git push origin",
     "update-readme": "node ./update-readme.mjs"
   },
   "repository": {
