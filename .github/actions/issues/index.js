@@ -48,7 +48,7 @@ function getAssignees() {
 
 function getLables() {
   return core
-    .getInput('labels', { default: '' })
+    .getInput('labels', { default: 'bug' })
     .split(',')
     .map((label) => label.trim());
 }
