@@ -1,8 +1,8 @@
 name: Readme
 on:
-  issues:
-    types:
-      - closed
+  push:
+    branches:
+      - main
 jobs:
   label:
     runs-on: ubuntu-latest
