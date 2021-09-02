@@ -1,12 +1,13 @@
 import fs from 'fs/promises';
 import fetch from 'node-fetch';
+import argsParser from 'args-parser';
 
 async function run() {
   try {
-    console.log(process.argv);
+    const args = argsParser.parse(process.argv);
 
     const response = await fetch(
-      'https://api.github.com/repos/jerryyxu/test-github-actions/issues?state=closed'
+      `https://api.github.com/repos/${args.repo}/issues?state=closed`
     );
 
     const issues = await response.json();
