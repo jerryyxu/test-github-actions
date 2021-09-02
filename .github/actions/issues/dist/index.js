@@ -6394,12 +6394,12 @@ const run = async () => {
   }
 
   // 设置 assignees
-  if (!issue.assignees?.length) {
+  if (!issue.assignees.length) {
     data.assignees = getAssignees();
   }
 
   // 设置标签
-  if (!issues.labels?.length) {
+  if (!issues.labels.length) {
     data.labels = getLables();
   }
 
