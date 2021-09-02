@@ -17,10 +17,12 @@ async function getMilestoneNum() {
   const month = `${now.getMonth() + 1}`.padStart(2, '0');
   const title = `${year}-${month}`;
 
-  const milestones = octokit.rest.issues.listMilestones({
+  const milestones = await octokit.rest.issues.listMilestones({
     owner,
     repo,
   });
+
+  console.log(milestones);
 
   let milestone = milestones.find((m) => m.title === title);
 

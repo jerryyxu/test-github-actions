@@ -4,7 +4,7 @@
   "description": "test-github-actions",
   "main": "index.js",
   "scripts": {
-    "build": "ncc build ./.github/actions/issues/index.js -o ./.github/actions/issues/dist -m"
+    "build": "ncc build ./.github/actions/issues/index.js -o ./.github/actions/issues/dist"
   },
   "repository": {
     "type": "git",
