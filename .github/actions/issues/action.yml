@@ -1,12 +1,14 @@
-name: "Auto-assign Issue"
-description: "Auto-assigns issues to users"
+name: 'Auto-assign Issue'
+description: 'Auto-assigns issues to users'
 inputs:
   repo-token:
-    description: "The GITHUB_TOKEN, needed to update the Issue"
+    description: 'The GITHUB_TOKEN, needed to update the Issue'
     default: ${{ github.token }}
   assignees:
-    description: "Comma separated list of user names"
+    description: 'Comma separated list of user names'
     default: ${{ github.repository_owner  }}
+  labels:
+    description: 'Default labels'
 
 runs:
   using: node12

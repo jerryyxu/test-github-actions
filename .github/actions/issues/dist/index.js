@@ -6336,7 +6336,14 @@ if (!issue) {
   throw new Error(`Couldn't find issue info in current context`);
 }
 
-async function getMilestoneNum() {
+// 当前日期所以月份
+function getDaysOfMonth(curDate) {
+  return new Date(curDate.getFullYear(), curDate.getMonth() + 1, 0).getDate();
+}
+
+// 返回里程碑 number
+// 如果当前里程碑不存在 根据当前月份创建
+async function getOrCreateMilestone() {
   const now = new Date();
   const year = now.getFullYear();
   const month = `${now.getMonth() + 1}`.padStart(2, '0');
@@ -6357,6 +6364,7 @@ async function getMilestoneNum() {
         owner,
         repo,
         title,
+        due_on: `${year}-${month}-${getDaysOfMonth(now)}`,
       })
       .then((rsp) => rsp.data);
   }
@@ -6372,31 +6380,32 @@ function getAssignees() {
 }
 
 function getLables() {
-  return core
-    .getInput('labels', { default: 'bug' })
-    .split(',')
-    .map((label) => label.trim());
+  const labels = core.getInput('labels');
+
+  return labels ? labels.split(',').map((label) => label.trim()) : [];
 }
 
 const run = async () => {
-  const [milestone, assignees, labels] = await Promise.all([
-    getMilestoneNum(),
-    getAssignees(),
-    getLables(),
-  ]);
+  const data = { owner, repo, issue_number: issue.number };
 
-  console.log(milestone, assignees, labels);
+  // 设置里程碑
+  if (issue.milestone === null) {
+    data.milestone = await getOrCreateMilestone();
+  }
 
-  const data = await octokit.rest.issues.update({
-    owner,
-    repo,
-    issue_number: issue.number,
-    milestone,
-    assignees,
-    labels: ['bug'],
-  });
+  // 设置 assignees
+  if (!issue.assignees?.length) {
+    data.assignees = getAssignees();
+  }
 
-  console.log(data);
+  // 设置标签
+  if (!issues.labels?.length) {
+    data.labels = getLables();
+  }
+
+  console.log('[update issue]: ', data);
+
+  await octokit.rest.issues.update(data);
 };
 
 try {
