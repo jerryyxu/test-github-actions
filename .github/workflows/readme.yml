@@ -18,7 +18,7 @@ jobs:
       - name: Check for issues updates
         env:
           GITHUB_REPO: ${{ github.repository }}
-        run: npm run update-readme --repo=$GITHUB_REPO
+        run: npm run update-readme -- --repo=$GITHUB_REPO
       - name: Commit and push
         run: |-
           git diff

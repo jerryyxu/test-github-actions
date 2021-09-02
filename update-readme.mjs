@@ -9,9 +9,12 @@ async function run() {
       'https://api.github.com/repos/jerryyxu/test-github-actions/issues?state=closed'
     );
 
-    const data = await response.json();
+    const issues = await response.json();
 
-    await fs.writeFile('README.md', JSON.stringify(data, null, 2));
+    await fs.writeFile(
+      'README.md',
+      issues.map(({ title }) => title).join('\n')
+    );
   } catch (err) {
     console.error(err.message);
   }
