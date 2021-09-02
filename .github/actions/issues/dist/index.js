@@ -6385,7 +6385,9 @@ const run = async () => {
     getLables(),
   ]);
 
-  await octokit.rest.issues.update({
+  console.log(milestone, assignees, labels);
+
+  const data = await octokit.rest.issues.update({
     owner,
     repo,
     issue_number: issue.number,
@@ -6393,6 +6395,8 @@ const run = async () => {
     assignees,
     labels,
   });
+
+  console.log(data);
 };
 
 try {
