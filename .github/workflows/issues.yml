@@ -1,0 +1,13 @@
+name: Issues
+on:
+  issues:
+    types:
+      - opened
+      - reopened
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Labeler
+        uses: ./.github/actions/issues
