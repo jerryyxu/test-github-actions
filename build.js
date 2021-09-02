@@ -17,7 +17,7 @@ const run = async () => {
     }
   });
 
-  console.log('Build finished.');
+  console.log('ncc build finished.');
 };
 
 run();
