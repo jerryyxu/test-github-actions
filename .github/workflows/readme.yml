@@ -1,0 +1,12 @@
+name: Readme
+on:
+  issues:
+    types:
+      - closed
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Update Readme
+        uses: ./.github/actions/readme

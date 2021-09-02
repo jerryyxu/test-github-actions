@@ -1,0 +1,10 @@
+name: 'Update Readme'
+description: 'Auto-update readme.md where a issue closed'
+inputs:
+  repo-token:
+    description: 'The GITHUB_TOKEN, needed to update the files'
+    default: ${{ github.token }}
+
+runs:
+  using: node12
+  main: index.dist.js

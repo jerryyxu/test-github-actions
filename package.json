@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "test-github-actions",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "build": "ncc build ./.github/actions/issues/index.js -o ./.github/actions/issues/dist",
     "push": "npm run build & git add . & git commit -m 'temp' & git push origin"
@@ -20,6 +21,7 @@
   "homepage": "https://github.com/jerryyxu/test-github-actions#readme",
   "dependencies": {
     "@actions/core": "^1.5.0",
-    "@actions/github": "^5.0.0"
+    "@actions/github": "^5.0.0",
+    "@vercel/ncc": "^0.30.0"
   }
 }
