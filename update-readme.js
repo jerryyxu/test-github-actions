@@ -4,7 +4,7 @@ const github = require('@actions/github');
 const { token, repo: repository } = require('args-parser')(process.argv);
 
 const groupBy = (arr, keyFn) =>
-  arr.reduce((rv, x) => (rv[keyFn(x)] = rv[keyFn(x)] || []).push(x), {});
+  [...arr].reduce((rv, x) => (rv[keyFn(x)] = rv[keyFn(x)] || []).push(x), {});
 
 const label2Emoji = {
   文章: '📝',
