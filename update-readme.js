@@ -47,8 +47,8 @@ async function run() {
         content += `## ${m}\n`;
 
         issues[m].forEach(({ title, html_url, labels }) => {
-          const l = labels.find(({ title }) =>
-            Object.keys(label2Emoji).includes(title)
+          const l = labels.find(({ name }) =>
+            Object.keys(label2Emoji).includes(name)
           );
 
           content += `- [${
