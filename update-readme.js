@@ -36,10 +36,6 @@ async function run() {
     // 如果没有设置里程碑 按更新时间分组
     // updated_at: 2021-09-02T14:06:12Z
     issues = groupBy(issues, (x) => {
-      console.log(
-        1,
-        x.milestone ? x.milestone.title : x.updated_at.slice(0, 10)
-      );
       return x.milestone ? x.milestone.title : x.updated_at.slice(0, 10);
     });
 
@@ -60,8 +56,6 @@ async function run() {
           }${title}](${html_url})`;
         });
       });
-
-    console.log(content);
 
     fs.writeFile('README.md', content, { encoding: 'utf8' });
   } catch (err) {
