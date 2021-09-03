@@ -16,13 +16,11 @@ async function run() {
     const octokit = github.getOctokit(token);
     const [owner, repo] = repository.split('/');
 
-    let issues = await octokit.rest.issues.listForRepo({
+    let { data: issues } = await octokit.rest.issues.listForRepo({
       owner,
       repo,
       state: 'closed',
     });
-
-    console.log(issues);
 
     issues = groupBy(issues, (x) => x.milestone.title);
 
