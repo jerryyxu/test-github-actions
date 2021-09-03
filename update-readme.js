@@ -22,6 +22,8 @@ async function run() {
       state: 'closed',
     });
 
+    console.log(issues);
+
     // 如果没有设置里程碑 按更新时间分组
     // updated_at: 2021-09-02T14:06:12Z
     issues = groupBy(issues, (x) =>
