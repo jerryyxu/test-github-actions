@@ -3,7 +3,7 @@ on:
   issues:
     types: [edited, deleted, closed, reopen]
 jobs:
-  Run Update:
+  UpdateReadme:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repo
