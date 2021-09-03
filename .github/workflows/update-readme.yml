@@ -17,7 +17,7 @@ jobs:
       - name: Run script
         env:
           GITHUB_REPO: ${{ github.repository }}
-          GITHUB_TOKEN: ${{ github.repository }}
+          GITHUB_TOKEN: ${{ github.token }}
         run: npm run update-readme -- --repo=$GITHUB_REPO --token=$GITHUB_TOKEN
       - name: Commit and push
         run: |-

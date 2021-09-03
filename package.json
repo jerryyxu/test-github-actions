@@ -6,7 +6,7 @@
   "scripts": {
     "push": "git pull & git add . & git commit -m temp & git push origin",
     "update-readme": "node ./update-readme.js",
-    "update-issue": "node ./update-issue.js"
+    "check-issue": "node ./check-issue.js"
   },
   "repository": {
     "type": "git",

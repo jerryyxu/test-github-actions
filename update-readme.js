@@ -14,7 +14,7 @@ const label2Emoji = {
 async function run() {
   try {
     const octokit = github.getOctokit(token);
-    const [owner, repo] = repository.full_name.split('/');
+    const [owner, repo] = repository.split('/');
 
     let issues = await octokit.rest.issues.listForRepo({
       owner,
