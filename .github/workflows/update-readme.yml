@@ -12,8 +12,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '14.x'
-      - name: Install node dependencies
-        run: npm install
+      # - name: Install node dependencies
+      #   run: npm install
       - name: Run script
         env:
           GITHUB_REPO: ${{ github.repository }}

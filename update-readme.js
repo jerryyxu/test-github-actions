@@ -46,15 +46,17 @@ async function run() {
       .forEach((m) => {
         content += `## ${m}\n`;
 
-        issues[m].forEach(({ title, html_url, labels }) => {
-          const l = labels.find(({ name }) =>
-            Object.keys(label2Emoji).includes(name)
-          );
+        issues[m]
+          .sort((x, y) => (x.update_at > y.update_at ? -1 : 1))
+          .forEach(({ title, html_url, labels }) => {
+            const l = labels.find(({ name }) =>
+              Object.keys(label2Emoji).includes(name)
+            );
 
-          content += `- [${
-            l ? label2Emoji[l] + ' ' : ''
-          }${title}](${html_url})\n`;
-        });
+            content += `- [${
+              l ? label2Emoji[l.name] + ' ' : ''
+            }${title}](${html_url})\n`;
+          });
       });
 
     fs.writeFile('README.md', content, { encoding: 'utf8' });
