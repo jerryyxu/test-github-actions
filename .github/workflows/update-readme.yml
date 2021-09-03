@@ -1,28 +1,29 @@
-name: Update README.md
+name: Update README
 on:
   issues:
-    types: [edited, deleted, closed]
+    types: [edited, deleted, closed, reopen]
 jobs:
   UpdateJob:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repo
         uses: actions/checkout@v2
-      - name: Use Node
+      - name: Setup Node
         uses: actions/setup-node@v1
         with:
           node-version: '14.x'
       - name: Install node dependencies
         run: npm install
-      - name: Check for issues updates
+      - name: Run script
         env:
           GITHUB_REPO: ${{ github.repository }}
-        run: npm run update-readme -- --repo=$GITHUB_REPO
+          GITHUB_TOKEN: ${{ github.repository }}
+        run: npm run update-readme -- --repo=$GITHUB_REPO --token=$GITHUB_TOKEN
       - name: Commit and push
         run: |-
           git diff
           git config --global user.email "actions@users.noreply.github.com"
-          git config --global user.name "jerryyu-bot"
+          git config --global user.name "actions-bot"
           git add -A
           git commit -m "Update README.md" || git commit --allow-empty -m "Empty commit"
           git push
