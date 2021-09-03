@@ -22,7 +22,11 @@ async function run() {
       state: 'closed',
     });
 
-    issues = groupBy(issues, (x) => x.milestone.title);
+    // 如果没有设置里程碑 按更新时间分组
+    // updated_at: 2021-09-02T14:06:12Z
+    issues = groupBy(issues, (x) =>
+      x.milestone ? x.milestone.title : x.updated_at.slice(0, 10)
+    );
 
     let content = '';
 
@@ -31,7 +35,7 @@ async function run() {
       .forEach((m) => {
         content += `## ${m}\n`;
 
-        issues.forEach(({ title, html_url, labels }) => {
+        issues[m].forEach(({ title, html_url, labels }) => {
           const l = labels.find(({ title }) =>
             label2Emoji.keys().includes(title)
           );
