@@ -3,12 +3,23 @@ const github = require('@actions/github');
 
 const { token, repo: repository } = require('args-parser')(process.argv);
 
-const groupBy = (arr, keyFn) =>
-  [...arr].reduce((rv, x) => (rv[keyFn(x)] = rv[keyFn(x)] || []).push(x), {});
-
 const label2Emoji = {
   文章: '📝',
   小记: '✍',
+};
+
+const groupBy = (arr, keyFn) => {
+  return arr.reduce((rv, x) => {
+    const k = keyFn(x);
+
+    if (!rv[k]) {
+      rv[k] = [];
+    }
+
+    rv[k].push(x);
+
+    return rv;
+  }, {});
 };
 
 async function run() {
@@ -22,15 +33,15 @@ async function run() {
       state: 'closed',
     });
 
-    console.log(issues);
-
     // 如果没有设置里程碑 按更新时间分组
     // updated_at: 2021-09-02T14:06:12Z
-    issues = groupBy(issues, (x) =>
-      x.milestone ? x.milestone.title : x.updated_at.slice(0, 10)
-    );
-
-    console.log(issues);
+    issues = groupBy(issues, (x) => {
+      console.log(
+        1,
+        x.milestone ? x.milestone.title : x.updated_at.slice(0, 10)
+      );
+      return x.milestone ? x.milestone.title : x.updated_at.slice(0, 10);
+    });
 
     let content = '';
 
