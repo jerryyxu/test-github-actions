@@ -28,6 +28,8 @@ async function run() {
       x.milestone ? x.milestone.title : x.updated_at.slice(0, 10)
     );
 
+    conosle.log(issues);
+
     let content = '';
 
     Object.keys(issues)
