@@ -22,6 +22,8 @@ async function run() {
       state: 'closed',
     });
 
+    console.log(issues);
+
     issues = groupBy(issues, (x) => x.milestone.title);
 
     let content = '';
@@ -31,12 +33,14 @@ async function run() {
       .forEach((m) => {
         content += `## ${m}\n`;
 
-        issues.forEach(({ title, labels }) => {
+        issues.forEach(({ title, html_url, labels }) => {
           const l = labels.find(({ title }) =>
             label2Emoji.keys().includes(title)
           );
 
-          content += `- ${l ? label2Emoji[l] + ' ' : ''}${title}`;
+          content += `- [${
+            l ? label2Emoji[l] + ' ' : ''
+          }${title}](${html_url})`;
         });
       });
 
