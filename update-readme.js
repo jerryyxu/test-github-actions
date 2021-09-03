@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require('fs/promises');
 const github = require('@actions/github');
 
 const { token, repo: repository } = require('args-parser')(process.argv);
@@ -46,7 +46,9 @@ async function run() {
         });
       });
 
-    fs.writeFile('README.md', content);
+    console.log(content);
+
+    fs.writeFile('README.md', content, { encoding: 'utf8' });
   } catch (err) {
     console.error(err.message);
   }
